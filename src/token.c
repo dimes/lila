@@ -1,6 +1,7 @@
 #include "token.h"
 
 #include <errno.h>
+#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -52,6 +53,8 @@ void dealloc_buffer(Buffer *buffer) {
 }
 
 Tokenizer *init_tokenizer(FILE *file) {
+    setlocale(LC_ALL, "en_US.utf8");
+
     Tokenizer *t = malloc(sizeof(Tokenizer));
     memset(t, 0, sizeof(Tokenizer));
 
